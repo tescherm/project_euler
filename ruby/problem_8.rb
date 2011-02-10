@@ -1,6 +1,6 @@
 #!/bin/env ruby
 #
-# Problem 6
+# Problem 8
 #
 # Author::    mattt
 #
