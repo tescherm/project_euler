@@ -36,6 +36,34 @@ def timed_run(&block)
 
 end
 
+class Set
+  def shift
+    element = @hash.shift
+    if element.nil?
+      return Set.new
+    else
+      return element[0]
+    end
+  end
+
+  def choose(k, n=self)
+    return [[].to_set].to_set if n.empty? && k == 0
+    return [].to_set if n.empty? && k > 0
+    return [[].to_set].to_set if n.size > 0 && k == 0
+    choose_set = Set.new(n)
+    choose_set.shift
+    new_element = Set.new(n).shift
+    choose(k, choose_set) + append_all(choose(k-1, choose_set), new_element)
+  end
+
+  private
+
+  def append_all(sets, element)
+    sets.map { |l| l << element }
+  end
+
+end
+
 class Integer
   # Returns true if this integer
   # is prime, false otherwise
@@ -92,6 +120,33 @@ class Integer
   def to_digit_array
     self.to_s.each_char.map(&:to_i)
   end
+end
+
+class BinaryTree
+  def initialize(root)
+    @root = root
+  end
+
+  class Node
+    attr_accessor :left_child
+    attr_accessor :right_child
+
+    attr_reader :value
+    def initialize(id, value)
+      @id = id
+      @value = value
+    end
+
+    def ==(node)
+      self.value == node.value and self.id = node.id
+    end
+
+    def inspect
+      "id = #{self.id} value = #{self.value}"
+    end
+
+  end
+
 end
 
 # Adjacency list
