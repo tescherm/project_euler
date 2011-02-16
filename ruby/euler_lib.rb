@@ -6,6 +6,7 @@
 # Author::    mattt
 #
 require 'set'
+require 'benchmark'
 
 # Returns the nth fibonacci number
 def fib(n)
@@ -25,15 +26,13 @@ def fib(n)
 end
 
 # Track and display the elapsed
-# time (in seconds) to run the given
+# time to run the given
 # code block
 def timed_run(&block)
-  start_time = Time.now
-  block.call
-  end_time = Time.now
-  elapsed_time = end_time - start_time
-  puts "Code ran in #{elapsed_time} seconds"
-
+  time = Benchmark.measure do
+    block.call
+  end
+  puts time
 end
 
 class Set
