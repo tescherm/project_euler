@@ -6,24 +6,21 @@
 #
 require 'ruby/euler_lib'
 
-#TODO slow (several minutes)
 timed_run{
-  n = 0
+
+  nums = (1..20).to_a
+
   loop do
-    n += 1
-    next if n % 2 != 0
-    next if n % 3 != 0
+    break if nums.length == 1
 
-    is_divisible = true
-    20.downto(1) do |i|
-      if n % i != 0
-        is_divisible = false
-        break
-      end
-    end
+    first_num = nums.pop
+    next_num = nums.pop
 
-    break if is_divisible
+    least_common_multiple = lcm(first_num, next_num)
+    nums.push least_common_multiple
+
   end
 
-  puts n
+  #232792560
+  puts nums.shift
 }
