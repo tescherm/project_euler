@@ -8,6 +8,15 @@
 require 'set'
 require 'benchmark'
 
+def lcm(a, b)
+  (a * b).abs/gcd(a, b)
+end
+
+def gcd(a,b)
+  return a if b == 0
+  gcd(b, a % b)
+end
+
 # Returns the nth fibonacci number
 def fib(n)
   prev_fib = 0
