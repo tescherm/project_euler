@@ -94,6 +94,14 @@ class Integer
     return prime
   end
 
+  def factorial
+    fact = 1
+    for index in 1..self
+      fact *= index
+    end
+    return fact
+  end
+
   # Returns true if this integer is
   # a palindrome, false otherwise
   def palindrome?
