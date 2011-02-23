@@ -157,6 +157,40 @@ class BinaryTree
 
 end
 
+# Pythagorean Triplet Generator
+class PythagoreanTriples
+  def initialize
+    @m = 2
+    @n = 1
+    @k = 1
+  end
+
+  def next_triple
+    # using euclid's formula:
+    # a = m^2 - n^2
+    # b = m * n
+    # c = m^2 + n^2
+    a = @k * (@m**2 - @n ** 2)
+    b = @k * (2 * @m * @n)
+    c = @k * (@m ** 2 + @n ** 2)
+    triple = [a,b,c]
+    if @n == (@m - 1)
+      @m += 1
+      @n = 1
+    else
+      @n += 1
+    end
+
+    return triple
+  end
+
+  def reset
+    @m = 2
+    @n = 1
+    @k = 1
+  end
+end
+
 # Adjacency list
 class AdjacencyList
   VERT_MAP = {}
