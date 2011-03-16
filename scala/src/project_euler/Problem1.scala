@@ -1,5 +1,11 @@
 package project_euler
 
+/**
+ * Problem 1
+ * 
+ * @author mattt
+ *
+ */
 object Problem1 {
 
   def main(args: Array[String]): Unit = {
