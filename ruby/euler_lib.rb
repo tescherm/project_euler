@@ -138,6 +138,41 @@ class Integer
   end
 end
 
+# prime number generator
+class Primes
+  include Enumerable
+
+  FIRST_PRIME = 2
+
+  attr_reader :primes
+  def initialize(max=100)
+    @max = max
+    @sieve = (FIRST_PRIME..max).to_a
+    @primes = []
+    @p = FIRST_PRIME
+  end
+
+  # using the sieve of Eratosthenes
+  def next_prime
+    if !@primes.include?(FIRST_PRIME)
+      @primes << FIRST_PRIME
+      return FIRST_PRIME
+    end
+
+    # if not met the sieve only contains prime numbers
+    # so we do not need to filter any further
+    if @p < Math.sqrt(@max)
+      # remove any multiples of p from the sieve
+      @sieve = @sieve.select {|n| n % @p != 0 }
+    end
+    # increment p to the next value in the sieve
+    @p = @sieve.shift
+    @primes << @p
+    return @p
+  end
+
+end
+
 class BinaryTree
   def initialize(root)
     @root = root
