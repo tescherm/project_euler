@@ -104,6 +104,8 @@ class Integer
 
   # Returns true if this integer is
   # a palindrome, false otherwise
+  # TODO slow, no doubt a better way
+  # to do it
   def palindrome?
     n = self
 
