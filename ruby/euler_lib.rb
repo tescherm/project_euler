@@ -102,6 +102,10 @@ class Integer
     return fact
   end
 
+  def palindrome_fast?
+    return self.to_s == self.to_s.reverse!
+  end
+
   # Returns true if this integer is
   # a palindrome, false otherwise
   # TODO slow, no doubt a better way

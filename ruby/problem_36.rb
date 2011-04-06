@@ -11,10 +11,11 @@ MAX = 1_000_000
 timed_run{
   sum = 0
   0.upto(MAX) do |num|
-    if num.palindrome? and ("%b" % num).to_i.palindrome?
+    if num.palindrome_fast? and ("%b" % num).to_i.palindrome_fast?
       sum += num
     end
   end
 
+  #872187
   puts sum
 }
