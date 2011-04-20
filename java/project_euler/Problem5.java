@@ -18,7 +18,7 @@ public final class Problem5 {
     }
 
     private static long lcm(final long a, final long b) {
-        return (Math.abs(a * b) / gcd(a, b));
+        return Math.abs(a * b) / gcd(a, b);
     }
 
     public static void main(final String[] args) {
