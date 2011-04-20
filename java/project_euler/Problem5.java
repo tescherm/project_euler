@@ -10,8 +10,6 @@ import java.util.Deque;
  */
 public final class Problem5 {
 
-    private static final Deque<Long> NUMBERS = new ArrayDeque<Long>();
-
     private static long gcd(final long a, final long b) {
         if (b == 0) {
             return a;
@@ -24,20 +22,21 @@ public final class Problem5 {
     }
 
     public static void main(final String[] args) {
+        final Deque<Long> numbers = new ArrayDeque<Long>();
         for (int number = 1; number <= 20; number++) {
-            NUMBERS.add(Long.valueOf(number));
+            numbers.add(Long.valueOf(number));
         }
         while (true) {
-            if (NUMBERS.size() == 1) {
+            if (numbers.size() == 1) {
                 break;
             }
-            final Long firstNum = NUMBERS.removeLast();
-            final Long nextNum = NUMBERS.removeLast();
+            final Long firstNum = numbers.removeLast();
+            final Long nextNum = numbers.removeLast();
 
             final Long lcm = lcm(firstNum, nextNum);
 
-            NUMBERS.addLast(lcm);
+            numbers.addLast(lcm);
         }
-        System.out.println(NUMBERS.getLast());
+        System.out.println(numbers.getLast());
     }
 }
